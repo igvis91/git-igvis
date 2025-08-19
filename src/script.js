@@ -2,9 +2,14 @@
 import isValid from './isValidName.js';
 import { GREETING } from './constants/GREETING.js';
 
-// Modules for formatPrices
+// Modules for formatting prices
 import { CURRENCY_SYMBOLS } from './constants/CURRENCY_SYMBOLS.js';
 import { formatWithCurrency } from './formatWithCurrency.js';
+import { formatPrices } from './formatPrices.js';
+
+// Classes
+import { Task } from './user-data/Task.js';
+import { User } from './user-data/User.js';
 
 function sayHelloToUser(name) {
     if (!isValid(name)) {
@@ -14,13 +19,16 @@ function sayHelloToUser(name) {
     return `${GREETING}, ${name}!`;
 }
 
-function formatPrices(prices, currency) {
-    const currencySymbol = CURRENCY_SYMBOLS[currency] || '$';
+export { sayHelloToUser, formatPrices, isValid, GREETING, CURRENCY_SYMBOLS, formatWithCurrency, Task, User };
 
-    return prices.map((price) => {
-        return formatWithCurrency(price, currencySymbol);
-    });
-}
-
-export { sayHelloToUser, formatPrices };
+export default {
+    isValid,
+    sayHelloToUser,
+    GREETING,
+    CURRENCY_SYMBOLS,
+    formatWithCurrency,
+    formatPrices,
+    Task,
+    User,
+};
 
