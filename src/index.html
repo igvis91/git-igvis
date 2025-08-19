@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Classes and Modules</title>
+  </head>
+  <body>
+    <h1>JS Classes and Modules</h1>
+    <div id="output"></div>
+
+    <script type="module">
+      import { sayHelloToUser, formatPrices } from './script.js';
+      import { Task } from './user-data/Task.js';
+      import { User } from './user-data/User.js';
+
+      const out = document.getElementById('output');
+
+      const messages = [];
+      messages.push(sayHelloToUser('Stan'));
+      messages.push(sayHelloToUser(''));
+
+      const prices = [1, 2.5, 10.333];
+      messages.push(JSON.stringify(formatPrices(prices, 'US')));
+      messages.push(JSON.stringify(formatPrices(prices, 'EUR')));
+
+      const user = new User('Stan', 'Jackman');
+      const tasks = [new Task('Task1'), new Task('Task2')];
+      user.addTasks(tasks);
+      messages.push(user.fullName);
+      messages.push(String(user.getTasksCount()));
+
+      out.textContent = messages.join('\n');
+    </script>
+  </body>
+  </html>
+
