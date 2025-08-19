@@ -24,6 +24,7 @@ function isPalindrome(str) {
 }
 
 function countLetters(str) {
+  if (!str) return {};
   const res = {};
   for (let ch of str.replace(/\s+/g, "")) {
     res[ch] = (res[ch] || 0) + 1;
@@ -43,10 +44,11 @@ function divideArrays(arr, size) {
 function encrypt(str, n) {
   if (n <= 0) return str;
   let res = "";
+  const shift = n % 26;
   for (let ch of str) {
     const code = ch.charCodeAt(0);
     if (code >= 65 && code <= 90) {
-      const shifted = (code - 65 + n) % 26;
+      const shifted = (code - 65 - shift + 26) % 26;
       res += String.fromCharCode(shifted + 65);
     } else {
       res += ch;
