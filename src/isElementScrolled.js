@@ -1,4 +1,4 @@
-export function isElementScrolled(element) {
+function isElementScrolled(element) {
   if (element == null) {
     return {
       scrollTop: null,
@@ -16,6 +16,15 @@ export function isElementScrolled(element) {
     isScrolled: scrollTop > 0 || scrollLeft > 0,
   };
 }
-
+export { isElementScrolled };
 export default isElementScrolled;
+
+// Provide CommonJS compatibility in case tests use require()
+// This block will be ignored in ESM environments where `module` is undefined
+/* istanbul ignore next */
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = isElementScrolled;
+  module.exports.isElementScrolled = isElementScrolled;
+  module.exports.default = isElementScrolled;
+}
 
