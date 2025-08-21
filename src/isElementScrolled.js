@@ -17,3 +17,5 @@ export function isElementScrolled(element) {
   };
 }
 
+export default isElementScrolled;
+

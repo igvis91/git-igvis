@@ -3,10 +3,8 @@ export function isElementVisible(element) {
     return false;
   }
 
-  if (!(element instanceof Element)) {
-    return false;
-  }
-
-  return element.offsetWidth > 0 || element.offsetHeight > 0;
+  const width = Number(element.offsetWidth) || 0;
+  const height = Number(element.offsetHeight) || 0;
+  return width > 0 || height > 0;
 }
 
